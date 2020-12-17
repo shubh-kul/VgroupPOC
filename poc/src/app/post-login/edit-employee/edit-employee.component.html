@@ -1,0 +1,25 @@
+<div>
+    <h3>{{(data.value === 'create') ? 'Create Employee Form' : 'Update Employee Form'}}</h3>
+    <form [formGroup]="employeeDetailsForm">
+        <input [ngClass]="{ 'is-invalid':f.name.errors && isSubmitted }" formControlName="name" required placeholder="Enter Employee Name" type="text"/>
+        <div *ngIf="f.name.errors && isSubmitted">
+            <div *ngIf="f.name.errors.required">Name is required.
+            </div>
+        </div>
+        <br/>
+        <input [ngClass]="{ 'is-invalid':f.salary.errors && isSubmitted }" formControlName="salary" required placeholder="Enter Employee Salary" type="text"/>
+        <div *ngIf="f.salary.errors && isSubmitted">
+            <div *ngIf="f.salary.errors.required">Salary is required.
+            </div>
+        </div>
+        <br/>
+        <input [ngClass]="{ 'is-invalid':f.age.errors && isSubmitted }" formControlName="age" required placeholder="Enter Employee Age" type="text" />
+        <div *ngIf="f.age.errors && isSubmitted">
+            <div *ngIf="f.age.errors.required">Age is required.
+            </div>
+        </div>
+        <br/>
+        <button type="submit" *ngIf="(data.value === 'edit')" (click)="updateEmployeeDetails()">Update</button>
+        <button type="submit" *ngIf="(data.value === 'create')" (click)="createEmployeeDetails()">Create</button>
+        </form>
+</div>

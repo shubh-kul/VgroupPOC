@@ -1,0 +1,44 @@
+<mat-card class="signup-card">
+    Signup Form
+    <form [formGroup]="signupForm" (ngSubmit)="onClickSubmit()">
+
+        <input type="text" class="form-control" placeholder="Firstname"
+            [ngClass]="{ 'is-invalid':f.firstname.errors && isSubmitted }" formControlName="firstname" required />
+        <div *ngIf="f.firstname.errors && isSubmitted">
+            <div *ngIf="f.firstname.errors.required">Firstname is required.
+            </div>
+        </div>
+
+        <input type="text" class="form-control" placeholder="Lastname"
+            [ngClass]="{ 'is-invalid':f.lastname.errors && isSubmitted }" formControlName="lastname" required />
+        <div *ngIf="f.lastname.errors && isSubmitted">
+            <div *ngIf="f.lastname.errors.required">Lastname is required.
+            </div>
+        </div>
+
+        <input type="text" class="form-control" placeholder="Email"
+            [ngClass]="{ 'is-invalid':f.email.errors && isSubmitted }" formControlName="email" required />
+        <div *ngIf="f.email.errors && isSubmitted">
+            <div *ngIf="f.email.errors.required">Email is required.
+            </div>
+            <div *ngIf="f.email.errors.pattern">Your email address format is not recognised
+            </div>
+        </div>
+
+        <input [ngClass]="{ 'is-invalid':f.password.errors && isSubmitted }" type="password" class="form-control"
+            placeholder="Password" formControlName="password" required />
+        <div *ngIf="f.password.errors && isSubmitted">
+            <div *ngIf="f.password.errors.required">Password is required.
+            </div>
+        </div>
+
+        <input [ngClass]="{ 'is-invalid':f.confirm_password.errors && (isSubmitted) }" formControlName="confirm_password" type="password" class="form-control" placeholder="Confirm Password"/>
+        <div *ngIf="f.confirm_password.errors && isSubmitted" class="invalid-feedback">
+            <div *ngIf="f.confirm_password.errors.required">Confirm Password is required
+            </div>
+            <div *ngIf="f.confirm_password.errors.mustMatch">Passwords must match</div>
+        </div>
+
+        <button mat-raised-button>Submit</button>
+    </form>
+</mat-card>

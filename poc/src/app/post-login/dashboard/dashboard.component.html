@@ -1,0 +1,46 @@
+<div class="spinner-wrap" *ngIf="apiService.isLoading">
+    <mat-spinner></mat-spinner>
+</div>
+
+<button (click)="onCreateNewEmployee('create')" mat-flat-button>Create</button>
+
+<table mat-table [dataSource]="employeeList" class="mat-elevation-z8">
+
+    <!-- Employee ID Column -->
+    <ng-container matColumnDef="employee_id">
+        <th mat-header-cell *matHeaderCellDef> Employee ID </th>
+        <td mat-cell *matCellDef="let emp"> {{emp.id}} </td>
+    </ng-container>
+
+    <!-- Employee Name Column -->
+    <ng-container matColumnDef="employee_name">
+        <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+        <td mat-cell *matCellDef="let emp"> {{emp.employee_name}} </td>
+    </ng-container>
+
+    <!-- Salary Column -->
+    <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef> Salary </th>
+        <td mat-cell *matCellDef="let emp"> {{emp.employee_salary}} </td>
+    </ng-container>
+
+    <!-- Age Column -->
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef> Age </th>
+        <td mat-cell *matCellDef="let emp"> {{emp.employee_age}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let emp"> 
+        <div>
+            <button (click)="onEditSelectedEmployee(emp.id, 'edit', emp.employee_name, emp.employee_salary, emp.employee_age)" mat-flat-button>Edit</button>
+            <button (click)="onDeleteSelectedEmployee(emp.id)" mat-flat-button>Delete</button>
+        </div>    
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedEmployeeListColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedEmployeeListColumns;"></tr>
+</table>
