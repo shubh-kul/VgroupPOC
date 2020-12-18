@@ -67,6 +67,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // Delete particular employee by id.
   public onDeleteSelectedEmployee(id: string): void {
+    this.apiService.isLoading = true;
     this.apiService.deleteSelectedEmployee(id)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(
