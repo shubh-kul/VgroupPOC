@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   // Fetch All employees.
   public fetchAllEmployeeList(): void {
+    this.apiService.isLoading = true;
     this.apiService.getAllEmployeeList()
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe(

@@ -1,23 +1,38 @@
 <mat-card class="login-card">
-    Login Form
+    <h5 class="text-center mt-5 mb-5">Login Form</h5>
     <form [formGroup]="loginForm" (ngSubmit)="onClickLogin()">
 
-        <input type="text" class="form-control" placeholder="Email"
-            [ngClass]="{ 'is-invalid':f.email.errors && isSubmitted }" formControlName="email" required />
-        <div *ngIf="f.email.errors && isSubmitted">
-            <div *ngIf="f.email.errors.required">Email is required.
-            </div>
-            <div *ngIf="f.email.errors.pattern">Your email address format is not recognised
+
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid':f.email.errors && isSubmitted }" formControlName="email" required />
+                <div *ngIf="f.email.errors && isSubmitted">
+                    <div *ngIf="f.email.errors.required" class="text-danger">Email is required.
+                    </div>
+                    <div *ngIf="f.email.errors.pattern" class="text-danger">Your email address format is not recognised
+                    </div>
+                </div>
             </div>
         </div>
 
-        <input [ngClass]="{ 'is-invalid':f.password.errors && isSubmitted }" type="password" class="form-control"
-            placeholder="Password" formControlName="password" required />
-        <div *ngIf="f.password.errors && isSubmitted">
-            <div *ngIf="f.password.errors.required">Password is required.
+        <div class="form-group row">
+            <label for="inputPassword" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+                <input [ngClass]="{ 'is-invalid':f.password.errors && isSubmitted }" type="password"
+                    class="form-control" formControlName="password" required />
+                <div *ngIf="f.password.errors && isSubmitted">
+                    <div *ngIf="f.password.errors.required" class="text-danger">Password is required.
+                    </div>
+                </div>
             </div>
         </div>
-        <button mat-raised-button>Login</button>
-        <button mat-raised-button [routerLink]="['/signup']" >Sign Up</button>
+
+        <div class="mt-5">
+            <button mat-raised-button class="btn btn-primary">Login</button>
+            <button mat-raised-button class="btn btn-secondary pull-right" [routerLink]="['/signup']">Sign Up</button>
+        </div>
+
     </form>
 </mat-card>

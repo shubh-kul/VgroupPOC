@@ -45,6 +45,7 @@ export class EditEmployeeComponent implements OnInit {
     if (this.employeeDetailsForm.invalid) {
       return;
     }
+    this.apiService.isLoading = true;
     this.apiService.createNewEmployee(this.employeeDetailsForm.value)
     .pipe(takeUntil(this.componentDestroyed$))
     .subscribe(
@@ -71,6 +72,7 @@ export class EditEmployeeComponent implements OnInit {
     if (this.employeeDetailsForm.invalid) {
       return;
     }
+    this.apiService.isLoading = true;
     this.apiService.editSelectedEmployee(this.employeeDetailsForm.value, this.data.id)
     .pipe(takeUntil(this.componentDestroyed$))
     .subscribe(

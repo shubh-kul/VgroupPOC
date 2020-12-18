@@ -1,44 +1,75 @@
-<mat-card class="signup-card">
-    Signup Form
+<mat-card class="login-card signup">
+    <h5 class="text-center mt-3 mb-5">Signup Form</h5>
     <form [formGroup]="signupForm" (ngSubmit)="onClickSubmit()">
 
-        <input type="text" class="form-control" placeholder="Firstname"
-            [ngClass]="{ 'is-invalid':f.firstname.errors && isSubmitted }" formControlName="firstname" required />
-        <div *ngIf="f.firstname.errors && isSubmitted">
-            <div *ngIf="f.firstname.errors.required">Firstname is required.
+
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">First Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid':f.firstname.errors && isSubmitted }" formControlName="firstname"
+                    required />
+                <div *ngIf="f.firstname.errors && isSubmitted">
+                    <div *ngIf="f.firstname.errors.required" class="text-danger">First name is required.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <input type="text" class="form-control" placeholder="Lastname"
-            [ngClass]="{ 'is-invalid':f.lastname.errors && isSubmitted }" formControlName="lastname" required />
-        <div *ngIf="f.lastname.errors && isSubmitted">
-            <div *ngIf="f.lastname.errors.required">Lastname is required.
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Last Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid':f.lastname.errors && isSubmitted }" formControlName="lastname" required />
+                <div *ngIf="f.lastname.errors && isSubmitted">
+                    <div *ngIf="f.lastname.errors.required" class="text-danger">Last name is required.
+                    </div>
+                </div>
             </div>
         </div>
 
-        <input type="text" class="form-control" placeholder="Email"
-            [ngClass]="{ 'is-invalid':f.email.errors && isSubmitted }" formControlName="email" required />
-        <div *ngIf="f.email.errors && isSubmitted">
-            <div *ngIf="f.email.errors.required">Email is required.
-            </div>
-            <div *ngIf="f.email.errors.pattern">Your email address format is not recognised
-            </div>
-        </div>
-
-        <input [ngClass]="{ 'is-invalid':f.password.errors && isSubmitted }" type="password" class="form-control"
-            placeholder="Password" formControlName="password" required />
-        <div *ngIf="f.password.errors && isSubmitted">
-            <div *ngIf="f.password.errors.required">Password is required.
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Email</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control"
+                    [ngClass]="{ 'is-invalid':f.email.errors && isSubmitted }" formControlName="email" required />
+                <div *ngIf="f.email.errors && isSubmitted">
+                    <div *ngIf="f.email.errors.required" class="text-danger">Email is required.
+                    </div>
+                    <div *ngIf="f.email.errors.pattern" class="text-danger">Your email address format is not recognised
+                    </div>
+                </div>
             </div>
         </div>
 
-        <input [ngClass]="{ 'is-invalid':f.confirm_password.errors && (isSubmitted) }" formControlName="confirm_password" type="password" class="form-control" placeholder="Confirm Password"/>
-        <div *ngIf="f.confirm_password.errors && isSubmitted" class="invalid-feedback">
-            <div *ngIf="f.confirm_password.errors.required">Confirm Password is required
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Password</label>
+            <div class="col-sm-8">
+                <input [ngClass]="{ 'is-invalid':f.password.errors && isSubmitted }" type="password"
+                    class="form-control" formControlName="password" required />
+                <div *ngIf="f.password.errors && isSubmitted">
+                    <div *ngIf="f.password.errors.required" class="text-danger">Password is required.
+                    </div>
+                </div>
             </div>
-            <div *ngIf="f.confirm_password.errors.mustMatch">Passwords must match</div>
         </div>
 
-        <button mat-raised-button>Submit</button>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-4 col-form-label">Confirm Password</label>
+            <div class="col-sm-8">
+                <input [ngClass]="{ 'is-invalid':f.confirm_password.errors && (isSubmitted) }"
+                    formControlName="confirm_password" type="password" class="form-control"/>
+                <div *ngIf="f.confirm_password.errors && isSubmitted">
+                    <div *ngIf="f.confirm_password.errors.required" class="text-danger">Confirm Password is required
+                    </div>
+                    <div *ngIf="f.confirm_password.errors.mustMatch" class="text-danger">Passwords must match</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-block text-center mt-5">
+            <button class="btn btn-primary" mat-raised-button>Submit</button>
+        </div>
+        
     </form>
 </mat-card>
